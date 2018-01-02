@@ -4,8 +4,18 @@ import './index.css';
 import App from './App';
 import registerServiceWorker from './registerServiceWorker';
 
+/* Redux Dependiency */
+import { Provider } from 'react-redux';
+import { createStore, applyMiddleware } from 'redux';
+import thunk from 'redux-thunk';
+import reducers from './reducers';
 
-const ApplicationHolder = () => (<App/>);
 
+const createStoreWithMiddleware = applyMiddleware(thunk)(createStore);
+const store = createStoreWithMiddleware(reducers);
+const ApplicationHolder = (store) => ( 
+				<Provider store={store}> 
+					<App/> 
+				</Provider> );
 ReactDOM.render(<ApplicationHolder />, document.getElementById('root'));
 registerServiceWorker();

@@ -30,11 +30,22 @@ class Routes extends Component{
 								path="/"  
 								render ={(props)=>{return <LoginComponent 
 								sitedetails={sitedetails} 
+								getName = {this.props.getName}
+								getEmail ={this.props.getEmail}
+								getPassword ={this.props.getPassword}
 								userdetail={this.props.appdetails.users}/>}}
 							/>
 							<Route 
 								path="/register" 
-								render = {(props)=>{return <RegisterComponent sitedetails={sitedetails}/> }}
+								render = {(props)=>{return <RegisterComponent 
+									sitedetails={sitedetails}
+									getName = {this.props.getName}
+									getEmail ={this.props.getEmail}
+									getPassword ={this.props.getPassword}
+									getMobilenumber={this.props.getMobilenumber}
+									userdetail= {this.props.appdetails}
+									registerUser= {this.props.registerUser}
+								/> }}
 							/>
 							<Route 
 								path="/forgetpassword" 

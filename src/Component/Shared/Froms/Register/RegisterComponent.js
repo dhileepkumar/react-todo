@@ -3,6 +3,10 @@ import {Link} from 'react-router-dom';
 /* render html with class */
 
 class RegisterComponent extends Component{
+	constructor(props){	
+		super(props)
+		console.log(this.props);
+	}
 	render(){
 		return(
 			 <div className="container">
@@ -14,10 +18,11 @@ class RegisterComponent extends Component{
 					</div>
 					<form className="form-signin">
 						<span id="reauth-email" className="reauth-email"></span>
-						<input type="email" className="form-control" placeholder="Email address" name="useremail" required  />
-						<input type="text" className="form-control" placeholder="Mobile Number" name="userpassword" required />
-						<input type="password" className="form-control" placeholder="Password" name="userpassword" required />
-						<button className="btn btn-lg btn-primary btn-block btn-signin" type="submit">Sign in</button>
+						<input type="text" className="form-control" placeholder="Name" name="username" required  onChange={this.props.getName} />
+						<input type="email" className="form-control" placeholder="Email address" name="useremail" required  onChange={this.props.getEmail} />
+						<input type="text" className="form-control" placeholder="Mobile Number" name="userpassword" required onChange = {this.props.getMobilenumber} />
+						<input type="password" className="form-control" placeholder="Password" name="userpassword" required  onChange = {this.props.getPassword}/>
+						<button className="btn btn-lg btn-primary btn-block btn-signin" type="submit" onClick={this.props.registerUser}>Sign in</button>
 					</form>
 					<Link to="/forgetpassword" className="forgot-password">Forgot the password?</Link>
 					<Link to="/" className="forgot-password pull-right">Login</Link>
